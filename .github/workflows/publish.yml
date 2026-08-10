@@ -39,8 +39,9 @@ jobs:
 
       - uses: actions/setup-node@v4
         with:
-          node-version: "20"
-          registry-url: "https://registry.npmjs.org"
+          # Node 24 ships npm ≥ 11.5.1 required for OIDC trusted publishing.
+          # Do not set registry-url: it injects NODE_AUTH_TOKEN and skips OIDC.
+          node-version: "24"
           cache: npm
 
       - name: Configure git
