@@ -55,3 +55,7 @@ npx skli add cursor rule .cursor/rules/specs-documentation.mdc
 | [cmd-unlink](specs/features/cmd-unlink.md) | implemented | `unlink <id>` — remove a whole link by owner/repo or URL; optional `--keep-sources` |
 | [github-source](specs/features/github-source.md) | implemented | GitHub Source parse + remote ProjectManifest via `gh` |
 | [ide-targets](specs/features/ide-targets.md) | implemented | IdeId registry + primary rules/skills/agents install paths |
+
+## License
+
+MIT — see [LICENSE](LICENSE).
