@@ -118,6 +118,8 @@ npx skli --help
 
 Docs site (local): `npm run docs:dev` after install.
 
+GitHub Pages is built by [`.github/workflows/docs.yml`](.github/workflows/docs.yml) on push to `main`. One-time repo setting: **Settings → Pages → Source = GitHub Actions**.
+
 ### Release
 
 1. GitHub Actions → **Bump version** → `build` / `minor` / `major` (`build` = patch).
