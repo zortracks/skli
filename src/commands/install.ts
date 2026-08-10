@@ -168,7 +168,7 @@ export function registerInstallCommand(program: Command): void {
             );
             if (added.length > 0) {
               console.log(
-                `Added ${added.length} path(s) to .gitignore (# Ignored AI IDEs références).`,
+                `Added ${added.length} path(s) to .gitignore (# Ignored AI IDE references).`,
               );
             }
           }

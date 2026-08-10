@@ -72,7 +72,7 @@ Also supports targeting a Package by its **install path** (IDE layout path), opt
 
 | Step | Action | Expected result | Error |
 |------|--------|-----------------|-------|
-| 1 | `skli update cursor skill arcade-bootstrap --gitignore` | Append project-relative destinations under `# Ignored AI IDEs références` (also when refresh is skipped as already at version) | `--gitignore` with `--global` |
+| 1 | `skli update cursor skill arcade-bootstrap --gitignore` | Append project-relative destinations under `# Ignored AI IDE references` (also when refresh is skipped as already at version) | `--gitignore` with `--global` |
 
 ### Flow-09 — Linked manifests
 

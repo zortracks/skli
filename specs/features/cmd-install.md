@@ -3,7 +3,7 @@
 | Field | Value |
 |-------|--------|
 | Slug | `cmd-install` |
-| Status | defined |
+| Status | implemented |
 | Last review | 2026-08-10 |
 
 ## Summary
@@ -13,7 +13,7 @@
 **Current iteration:**
 - Parse `<ide>` CSV → resolve primary install dirs ([`ide-targets`](ide-targets.md)).
 - `kind` ∈ {`skill`, `rule`, `agent`}: fetch Source, copy into IDE dirs, upsert Package entry (`--versioning`, default `tag`).
-- Optional `--gitignore`: append every project-relative destination under `# Ignored AI IDEs références` in `{project}/.gitignore` (all IdeIds installed, not Cursor-only).
+- Optional `--gitignore`: append every project-relative destination under `# Ignored AI IDE references` in `{project}/.gitignore` (all IdeIds installed, not Cursor-only).
 
 Multi-package install from a remote ProjectManifest: see [`cmd-link`](cmd-link.md) (replaces former `kind=all` probe).
 
@@ -43,7 +43,7 @@ Multi-package install from a remote ProjectManifest: see [`cmd-link`](cmd-link.m
 
 | Step | Action | Expected result | Error |
 |------|--------|-----------------|-------|
-| 1 | `skli install cursor,claude skill <source> --gitignore` | After copy: each project-relative destination appended under `# Ignored AI IDEs références` (e.g. `.cursor/skills/foo` and `.claude/skills/foo`) | `--gitignore` with `--global` |
+| 1 | `skli install cursor,claude skill <source> --gitignore` | After copy: each project-relative destination appended under `# Ignored AI IDE references` (e.g. `.cursor/skills/foo` and `.claude/skills/foo`) | `--gitignore` with `--global` |
 | 2 | Section or `.gitignore` missing | Create file and/or section; then append | EACCES |
 | 3 | Path already listed | Skip duplicate; exit 0 | — |
 
@@ -57,7 +57,7 @@ Multi-package install from a remote ProjectManifest: see [`cmd-link`](cmd-link.m
 
 Package entry: [`config-manifests`](config-manifests.md). Paths: [`ide-targets`](ide-targets.md). GitHub parse: [`github-source`](github-source.md).
 
-`.gitignore` section header (exact): `# Ignored AI IDEs références`. Entries are project-relative paths using `/` separators. Skill → directory path; rule/agent → file path. One line per written destination for **every** IdeId that received a copy.
+`.gitignore` section header (exact when writing): `# Ignored AI IDE references`. Legacy `# Ignored AI IDEs références` is still recognized when reading. Entries are project-relative paths using `/` separators. Skill → directory path; rule/agent → file path. One line per written destination for **every** IdeId that received a copy.
 
 ## CLI
 
@@ -97,7 +97,7 @@ Options:
 | BR-cmd-install-011 | `--no-references` only valid with `kind=skill`; otherwise error. |
 | BR-cmd-install-012 | Skill install writes `includeReferences` (`true` by default, `false` if `--no-references`); excludes root `references/` from copy when false. |
 | BR-cmd-install-017 | `--gitignore` is project-scoped only; with `--global` → error. |
-| BR-cmd-install-018 | After successful Package install with `--gitignore`: append every project-relative copy destination under `# Ignored AI IDEs références` (create file/section if needed; skip duplicates). Paths derive from actual destinations for all selected IdeIds ([`ide-targets`](ide-targets.md)) — never Cursor-only hardcoded. |
+| BR-cmd-install-018 | After successful Package install with `--gitignore`: append every project-relative copy destination under `# Ignored AI IDE references` (create file/section if needed; skip duplicates). Recognize legacy `# Ignored AI IDEs références` when locating an existing section. Paths derive from actual destinations for all selected IdeIds ([`ide-targets`](ide-targets.md)) — never Cursor-only hardcoded. |
 
 ## User scenarios
 
@@ -130,7 +130,7 @@ Options:
 - [x] `versioning=tag` pins `version` to an existing tag (explicit Source tag or latest); never a branch.
 - [x] `add` writes new local Package entry shape with `ide`.
 - [x] `--no-references` (skill only) skips `references/` and sets `includeReferences: false`.
-- [x] `--gitignore` appends all project destinations under `# Ignored AI IDEs références`; errors with `--global`.
+- [x] `--gitignore` appends all project destinations under `# Ignored AI IDE references`; errors with `--global`.
 
 ## Terminology
 
