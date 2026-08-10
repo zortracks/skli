@@ -13,7 +13,11 @@
     "build": "tsup",
     "dev": "tsup --watch",
     "prepare": "npm run build",
-    "skli": "node dist/cli.js"
+    "skli": "node dist/cli.js",
+    "docs:sync": "node scripts/sync-docs-specs.mjs",
+    "docs:dev": "npm run docs:sync && vitepress dev docs",
+    "docs:build": "npm run docs:sync && vitepress build docs",
+    "docs:preview": "vitepress preview docs"
   },
   "engines": {
     "node": ">=20"
@@ -33,7 +37,7 @@
   "bugs": {
     "url": "https://github.com/zortracks/skli/issues"
   },
-  "homepage": "https://github.com/zortracks/skli#readme",
+  "homepage": "https://zortracks.github.io/skli/",
   "publishConfig": {
     "access": "public"
   },
@@ -44,6 +48,7 @@
   "devDependencies": {
     "@types/node": "^22.13.10",
     "tsup": "^8.4.0",
-    "typescript": "^5.8.2"
+    "typescript": "^5.8.2",
+    "vitepress": "^1.6.4"
   }
 }

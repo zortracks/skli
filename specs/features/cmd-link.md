@@ -37,7 +37,7 @@ Project scope only (no `--global`).
 
 | Step | Action | Expected result | Error |
 |------|--------|-----------------|-------|
-| 1 | `skli link cursor owner/repo --all --gitignore` | After copy: destinations appended under `# Ignored AI IDEs références` | — |
+| 1 | `skli link cursor owner/repo --all --gitignore` | After copy: destinations appended under `# Ignored AI IDE references` | — |
 
 ### Flow-04 — Explicit ref / versioning
 

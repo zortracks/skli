@@ -11,5 +11,8 @@
     "features": "specs/features",
     "featuresIndex": "specs/README.md",
     "glossaryOwner": "domain-glossary"
+  },
+  "docs": {
+    "contentDir": "docs"
   }
 }
