@@ -1,0 +1,65 @@
+name: Bump version
+
+on:
+  workflow_dispatch:
+    inputs:
+      bump:
+        description: Semver bump (build = patch)
+        required: true
+        type: choice
+        options:
+          - build
+          - minor
+          - major
+        default: build
+
+permissions:
+  contents: write
+  pull-requests: write
+
+jobs:
+  bump:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: develop
+          fetch-depth: 0
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "20"
+
+      - name: Map bump to npm version
+        id: map
+        run: |
+          case "${{ inputs.bump }}" in
+            build) echo "npm_bump=patch" >> "$GITHUB_OUTPUT" ;;
+            minor) echo "npm_bump=minor" >> "$GITHUB_OUTPUT" ;;
+            major) echo "npm_bump=major" >> "$GITHUB_OUTPUT" ;;
+          esac
+
+      - name: Bump package.json version
+        id: version
+        run: |
+          npm version "${{ steps.map.outputs.npm_bump }}" --no-git-tag-version
+          VERSION=$(node -p "require('./package.json').version")
+          echo "version=$VERSION" >> "$GITHUB_OUTPUT"
+          echo "tag=v$VERSION" >> "$GITHUB_OUTPUT"
+
+      - name: Create release branch and PR
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          BRANCH="release/${{ steps.version.outputs.tag }}"
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git checkout -b "$BRANCH"
+          git add package.json package-lock.json
+          git commit -m "chore: bump version to ${{ steps.version.outputs.version }}"
+          git push -u origin "$BRANCH"
+          gh pr create \
+            --base main \
+            --head "$BRANCH" \
+            --title "Release ${{ steps.version.outputs.tag }}" \
+            --body "Bump package version to \`${{ steps.version.outputs.version }}\` (\`${{ inputs.bump }}\`)."
