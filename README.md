@@ -118,19 +118,18 @@ npx skli --help
 
 Docs site (local): `npm run docs:dev` after install.
 
-GitHub Pages is built by [`.github/workflows/docs.yml`](.github/workflows/docs.yml) on push to `main`. One-time repo setting: **Settings → Pages → Source = GitHub Actions**.
+GitHub Pages is built by [`.github/workflows/publish.yml`](.github/workflows/publish.yml) on push to `main` and after each release. One-time repo setting: **Settings → Pages → Source = GitHub Actions**.
 
 ### Release
 
-1. GitHub Actions → **Bump version** → `patch` / `minor` / `major`.
-2. Review and merge the PR `release/vX.Y.Z` → `main`.
-3. `tag-release` creates tag `vX.Y.Z` on `main`; `publish` releases to npm via Trusted Publishing (OIDC).
+1. GitHub Actions → **Publish** → choose `patch` / `minor` / `major` → Run workflow.
+2. The workflow bumps the version on `main`, pushes tag `vX.Y.Z`, publishes to npm via Trusted Publishing (OIDC), deploys docs, and opens a sync PR `main` → `develop` if needed.
 
 ### First-time npm setup
 
 1. Ensure the `skli` package exists on npm (one manual publish if needed).
 2. On npmjs.com → package **skli** → **Trusted Publisher**: GitHub org/user `zortracks`, repository `skli`, workflow filename `publish.yml`, allow `npm publish`.
-3. Later releases only need the bump workflow + merge to `main`.
+3. Later releases only need the Publish workflow.
 
 ## License
 
