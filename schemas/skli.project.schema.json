@@ -1,0 +1,223 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/zortracks/skli/main/schemas/skli.project.schema.json",
+  "title": "skli ProjectManifest",
+  "description": "Project-scoped skli manifest at {project}/.skli/skli.json",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "version",
+    "name",
+    "description",
+    "versioning",
+    "tags",
+    "skills",
+    "rules",
+    "agents"
+  ],
+  "properties": {
+    "$schema": {
+      "type": "string",
+      "format": "uri",
+      "description": "Optional JSON Schema URI for IDE tooling"
+    },
+    "version": {
+      "type": "integer",
+      "minimum": 1,
+      "description": "File schema version"
+    },
+    "name": {
+      "type": "string",
+      "description": "Project name"
+    },
+    "description": {
+      "type": "string",
+      "description": "Project description; may be empty"
+    },
+    "versioning": {
+      "$ref": "#/$defs/versioningMode"
+    },
+    "tags": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "minLength": 1
+      },
+      "description": "Project tags (trimmed non-empty strings)"
+    },
+    "skills": {
+      "$ref": "#/$defs/packageMap"
+    },
+    "rules": {
+      "$ref": "#/$defs/packageMap"
+    },
+    "agents": {
+      "$ref": "#/$defs/packageMap"
+    },
+    "links": {
+      "type": "object",
+      "description": "Linked remote ProjectManifests (key = owner/repo). Linked packages are not dual-written into skills/rules/agents maps.",
+      "additionalProperties": {
+        "$ref": "#/$defs/linkEntry"
+      }
+    }
+  },
+  "$defs": {
+    "versioningMode": {
+      "type": "string",
+      "enum": ["tag", "commit", "branch", "none"]
+    },
+    "ideId": {
+      "type": "string",
+      "enum": ["cursor", "claude", "codex", "copilot", "windsurf"]
+    },
+    "linkResourceSelection": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["includeAll", "includes"],
+      "properties": {
+        "includeAll": {
+          "type": "boolean",
+          "description": "When true, all packages of this kind in the remote ProjectManifest"
+        },
+        "includes": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "minLength": 1
+          },
+          "description": "Package ids when includeAll is false; may be empty when includeAll is true"
+        }
+      }
+    },
+    "linkEntry": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "repos",
+        "versioning",
+        "version",
+        "ides",
+        "skills",
+        "rules",
+        "agents"
+      ],
+      "properties": {
+        "repos": {
+          "type": "string",
+          "pattern": "^[^/]+/[^/]+$",
+          "description": "GitHub owner/repo (same as links map key)"
+        },
+        "versioning": {
+          "$ref": "#/$defs/versioningMode"
+        },
+        "version": {
+          "type": "string",
+          "minLength": 1,
+          "description": "Pinned version of the linked remote ProjectManifest"
+        },
+        "ides": {
+          "type": "array",
+          "minItems": 1,
+          "uniqueItems": true,
+          "items": {
+            "$ref": "#/$defs/ideId"
+          }
+        },
+        "skills": {
+          "$ref": "#/$defs/linkResourceSelection"
+        },
+        "rules": {
+          "$ref": "#/$defs/linkResourceSelection"
+        },
+        "agents": {
+          "$ref": "#/$defs/linkResourceSelection"
+        }
+      }
+    },
+    "packageMap": {
+      "type": "object",
+      "additionalProperties": {
+        "$ref": "#/$defs/packageEntry"
+      }
+    },
+    "packageEntry": {
+      "oneOf": [
+        {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["source", "path", "versioning", "ide"],
+          "properties": {
+            "source": {
+              "const": "local"
+            },
+            "path": {
+              "type": "string",
+              "minLength": 1,
+              "description": "Path relative to the project root (POSIX separators)"
+            },
+            "versioning": {
+              "$ref": "#/$defs/versioningMode"
+            },
+            "ide": {
+              "$ref": "#/$defs/ideId",
+              "description": "Single target IDE for a local Package entry"
+            },
+            "includeReferences": {
+              "type": "boolean",
+              "description": "Skill installs: whether references/ was copied"
+            }
+          }
+        },
+        {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "source",
+            "repos",
+            "path",
+            "versioning",
+            "version",
+            "ides"
+          ],
+          "properties": {
+            "source": {
+              "const": "repos"
+            },
+            "repos": {
+              "type": "string",
+              "pattern": "^[^/]+/[^/]+$",
+              "description": "GitHub owner/repo"
+            },
+            "path": {
+              "type": "string",
+              "minLength": 1,
+              "description": "Path in the repository (POSIX separators)"
+            },
+            "versioning": {
+              "$ref": "#/$defs/versioningMode"
+            },
+            "version": {
+              "type": "string",
+              "minLength": 1,
+              "description": "Currently installed version"
+            },
+            "ides": {
+              "type": "array",
+              "minItems": 1,
+              "uniqueItems": true,
+              "items": {
+                "$ref": "#/$defs/ideId"
+              },
+              "description": "IDEs this Package was installed into"
+            },
+            "includeReferences": {
+              "type": "boolean",
+              "description": "Skill installs: whether references/ was copied"
+            }
+          }
+        }
+      ]
+    }
+  }
+}

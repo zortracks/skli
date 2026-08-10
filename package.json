@@ -1,0 +1,38 @@
+{
+  "name": "skli",
+  "version": "0.1.0",
+  "description": "CLI to manage AI IDE skills, rules, and agents like packages",
+  "type": "module",
+  "bin": {
+    "skli": "./dist/cli.js"
+  },
+  "files": [
+    "dist"
+  ],
+  "scripts": {
+    "build": "tsup",
+    "dev": "tsup --watch",
+    "prepare": "npm run build",
+    "skli": "node dist/cli.js"
+  },
+  "engines": {
+    "node": ">=20"
+  },
+  "keywords": [
+    "cli",
+    "skills",
+    "rules",
+    "agents",
+    "cursor"
+  ],
+  "license": "MIT",
+  "dependencies": {
+    "@inquirer/prompts": "^8.5.2",
+    "commander": "^13.1.0"
+  },
+  "devDependencies": {
+    "@types/node": "^22.13.10",
+    "tsup": "^8.4.0",
+    "typescript": "^5.8.2"
+  }
+}
