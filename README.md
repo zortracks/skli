@@ -38,6 +38,18 @@ npx skli init
 npx skli add cursor rule .cursor/rules/specs-documentation.mdc
 ```
 
+## Release
+
+1. GitHub Actions → **Bump version** → choose `build` / `minor` / `major` (`build` = patch).
+2. Review and merge the PR `release/vX.Y.Z` → `main`.
+3. `tag-release` creates tag `vX.Y.Z` on `main`; `publish` releases to npm via Trusted Publishing (OIDC).
+
+### First-time npm setup
+
+1. Ensure the `skli` package exists on npm (one manual publish if needed).
+2. On npmjs.com → package **skli** → **Trusted Publisher**: GitHub org/user `zortracks`, repository `skli`, workflow filename `publish.yml`, allow `npm publish`.
+3. Later releases only need the bump workflow + merge to `main`.
+
 ## Feature index
 
 | Feature | Status | Description |
@@ -55,3 +67,7 @@ npx skli add cursor rule .cursor/rules/specs-documentation.mdc
 | [cmd-unlink](specs/features/cmd-unlink.md) | implemented | `unlink <id>` — remove a whole link by owner/repo or URL; optional `--keep-sources` |
 | [github-source](specs/features/github-source.md) | implemented | GitHub Source parse + remote ProjectManifest via `gh` |
 | [ide-targets](specs/features/ide-targets.md) | implemented | IdeId registry + primary rules/skills/agents install paths |
+
+## License
+
+MIT — see [LICENSE](LICENSE).
