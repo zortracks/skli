@@ -4,14 +4,14 @@ on:
   workflow_dispatch:
     inputs:
       bump:
-        description: Semver bump (build = patch)
+        description: Semver bump
         required: true
         type: choice
         options:
-          - build
+          - patch
           - minor
           - major
-        default: build
+        default: patch
 
 permissions:
   contents: write
@@ -34,7 +34,7 @@ jobs:
         id: map
         run: |
           case "${{ inputs.bump }}" in
-            build) echo "npm_bump=patch" >> "$GITHUB_OUTPUT" ;;
+            patch) echo "npm_bump=patch" >> "$GITHUB_OUTPUT" ;;
             minor) echo "npm_bump=minor" >> "$GITHUB_OUTPUT" ;;
             major) echo "npm_bump=major" >> "$GITHUB_OUTPUT" ;;
           esac

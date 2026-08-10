@@ -122,7 +122,7 @@ GitHub Pages is built by [`.github/workflows/docs.yml`](.github/workflows/docs.y
 
 ### Release
 
-1. GitHub Actions → **Bump version** → `build` / `minor` / `major` (`build` = patch).
+1. GitHub Actions → **Bump version** → `patch` / `minor` / `major`.
 2. Merge PR `release/vX.Y.Z` → `main`.
 3. `tag-release` creates tag `vX.Y.Z`; `publish` releases to npm via Trusted Publishing (OIDC).
 
