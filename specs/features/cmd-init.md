@@ -103,7 +103,7 @@ Exit codes: `0` success or cancel after parent-git decline; `≠ 0` error (no gi
 
 ## User scenarios
 
-From a repo root: `npx skli init` then prompts; or `npx skli init -y --name my-app --tags ai,cursor`. Then `skli add` can reference Packages.
+From a repo root: `npx @zortracks/skli init` then prompts; or `npx @zortracks/skli init -y --name my-app --tags ai,cursor`. Then `skli add` can reference Packages.
 
 ## Dependencies
 
@@ -126,7 +126,7 @@ From a repo root: `npx skli init` then prompts; or `npx skli init -y --name my-a
 - [x] Flags and/or prompts for name, description, versioning, tags.
 - [x] `-y` applies defaults without prompt.
 - [x] ProjectIndex updated with the absolute project path.
-- [x] Visible in `npx skli --help`.
+- [x] Visible in `npx @zortracks/skli --help`.
 - [x] Written ProjectManifest includes `$schema` (including `--force`).
 
 ## Terminology

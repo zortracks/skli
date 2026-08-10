@@ -100,9 +100,9 @@ Invalid combinations → error, exit ≠ 0 (same as update selection rules; no `
 
 ## User scenarios
 
-`npx skli restore cursor skill arcade-bootstrap` re-downloads the pinned tag into Cursor after a local edit.  
-`npx skli restore .cursor/skills/arcade-bootstrap` same via path.  
-`npx skli restore --all` refreshes every repos Package at its current pinned version without upgrading.
+`npx @zortracks/skli restore cursor skill arcade-bootstrap` re-downloads the pinned tag into Cursor after a local edit.  
+`npx @zortracks/skli restore .cursor/skills/arcade-bootstrap` same via path.  
+`npx @zortracks/skli restore --all` refreshes every repos Package at its current pinned version without upgrading.
 
 ## Dependencies
 

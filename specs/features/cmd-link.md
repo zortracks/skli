@@ -88,8 +88,8 @@ Options:
 
 ## User scenarios
 
-`npx skli link cursor https://github.com/zortracks/skli --all` links every package from that repo’s ProjectManifest into Cursor dirs and records `links["zortracks/skli"]`.  
-`npx skli link cursor,claude owner/repo` opens checkboxes per kind, then copies into both IDE layouts.
+`npx @zortracks/skli link cursor https://github.com/zortracks/skli --all` links every package from that repo’s ProjectManifest into Cursor dirs and records `links["zortracks/skli"]`.  
+`npx @zortracks/skli link cursor,claude owner/repo` opens checkboxes per kind, then copies into both IDE layouts.
 
 ## Dependencies
 

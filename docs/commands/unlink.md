@@ -22,8 +22,8 @@ skli unlink <id> [options]
 ## Examples
 
 ```bash
-npx skli unlink owner/repo
-npx skli unlink https://github.com/owner/repo --keep-sources
+npx @zortracks/skli unlink owner/repo
+npx @zortracks/skli unlink https://github.com/owner/repo --keep-sources
 ```
 
 ## Behavior notes

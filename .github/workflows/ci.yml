@@ -23,4 +23,4 @@ jobs:
       - run: npm ci
       - run: npm run build
       - name: Smoke CLI
-        run: npx skli --help
+        run: npx @zortracks/skli --help

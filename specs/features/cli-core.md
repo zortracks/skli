@@ -8,7 +8,7 @@
 
 ## Summary
 
-npm package `skli` runnable via `npx skli {command} {options}`. Command and option parsing with **Commander**. Single entry point, global version and help.
+npm package `@zortracks/skli` runnable via `npx @zortracks/skli {command} {options}` (binary name `skli`). Command and option parsing with **Commander**. Single entry point, global version and help.
 
 ## User flows
 
@@ -19,14 +19,14 @@ npm package `skli` runnable via `npx skli {command} {options}`. Command and opti
 
 | Step | Action | Expected result | Error |
 |------|--------|-----------------|-------|
-| 1 | `npx skli --help` or `npx skli -h` | List of commands (`init`, `install`, `add`, …) and global options | — |
-| 2 | `npx skli -V` | Package semver version | — |
+| 1 | `npx @zortracks/skli --help` or `npx @zortracks/skli -h` | List of commands (`init`, `install`, `add`, …) and global options | — |
+| 2 | `npx @zortracks/skli -V` | Package semver version | — |
 
 ### Flow-02 — Unknown command
 
 | Step | Action | Expected result | Error |
 |------|--------|-----------------|-------|
-| 1 | `npx skli unknown` | Commander error message + exit code ≠ 0 | unknown command |
+| 1 | `npx @zortracks/skli unknown` | Commander error message + exit code ≠ 0 | unknown command |
 
 ## Data model
 
@@ -64,7 +64,7 @@ Commands:
 
 ## User scenarios
 
-A user discovers skli via `npx skli --help`, sees `init`, `install`, `add`, `link`, `update`, `restore`, `remove`, and `unlink`, then continues with one of those commands.
+A user discovers skli via `npx @zortracks/skli --help`, sees `init`, `install`, `add`, `link`, `update`, `restore`, `remove`, and `unlink`, then continues with one of those commands.
 
 ## Dependencies
 
@@ -79,8 +79,8 @@ A user discovers skli via `npx skli --help`, sees `init`, `install`, `add`, `lin
 
 ## Acceptance criteria
 
-- [x] `npx skli --help` lists `init`, `install`, `add`, `link`, `update`, `restore`, `remove`, and `unlink`.
-- [x] `npx skli -V` shows the package version (`--version` reserved for `update`).
+- [x] `npx @zortracks/skli --help` lists `init`, `install`, `add`, `link`, `update`, `restore`, `remove`, and `unlink`.
+- [x] `npx @zortracks/skli -V` shows the package version (`--version` reserved for `update`).
 - [x] TypeScript package is buildable; CLI entry with shebang.
 
 ## Terminology

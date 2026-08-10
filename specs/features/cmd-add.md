@@ -8,7 +8,7 @@
 
 ## Summary
 
-`skli add {ide} {kind} {path}` references a local **Package** (Skill, Rule, or Agent) in the current project's ProjectManifest (`{cwd}/.skli/skli.json`). Does not install files; does not write to the ProjectIndex. If the ProjectManifest is missing, error inviting `npx skli init`.
+`skli add {ide} {kind} {path}` references a local **Package** (Skill, Rule, or Agent) in the current project's ProjectManifest (`{cwd}/.skli/skli.json`). Does not install files; does not write to the ProjectIndex. If the ProjectManifest is missing, error inviting `npx @zortracks/skli init`.
 
 ## User flows
 
@@ -21,7 +21,7 @@
 |------|--------|-----------------|-------|
 | 1 | `skli add <ide> <kind> <path>` | `ide` / `kind` validated | invalid / missing |
 | 2 | — | `path` resolved; exists (file or directory) | path does not exist |
-| 3 | — | ProjectManifest read | ProjectManifest missing → message `npx skli init` |
+| 3 | — | ProjectManifest read | ProjectManifest missing → message `npx @zortracks/skli init` |
 | 4 | — | Upsert entry: `source=local`, `path`, `versioning=none`, `ide` (no `version`, no `repos`, no `ides`) | EACCES |
 | 5 | — | Success message; exit code 0 | — |
 
@@ -35,7 +35,7 @@
 
 | Step | Action | Expected result | Error |
 |------|--------|-----------------|-------|
-| 1 | `skli add <ide> <kind> <path>` without `{cwd}/.skli/skli.json` | No write | Clear error inviting `npx skli init`; exit code ≠ 0 |
+| 1 | `skli add <ide> <kind> <path>` without `{cwd}/.skli/skli.json` | No write | Clear error inviting `npx @zortracks/skli init`; exit code ≠ 0 |
 
 ## Data model
 
@@ -69,7 +69,7 @@ Arguments:
 | BR-cmd-add-001 | `ide`, `kind`, and `path` are required. |
 | BR-cmd-add-002 | `kind` ∈ PackageKind (`skill`, `rule`, `agent`). |
 | BR-cmd-add-003 | `path` must exist (file or directory); otherwise error. |
-| BR-cmd-add-004 | ProjectManifest = `{cwd}/.skli/skli.json`; if missing: error inviting `npx skli init` (do not create the file). |
+| BR-cmd-add-004 | ProjectManifest = `{cwd}/.skli/skli.json`; if missing: error inviting `npx @zortracks/skli init` (do not create the file). |
 | BR-cmd-add-005 | Write the entry in the map matching `kind` (`skills` / `rules` / `agents`). |
 | BR-cmd-add-006 | Id = basename of `path` without extension. |
 | BR-cmd-add-007 | Entry: `source=local`, `path` relative if possible, `versioning=none`, `ide`; omit `repos`, `version`, `ides`. |
@@ -79,7 +79,7 @@ Arguments:
 
 ## User scenarios
 
-After `npx skli init`, from the repo: `skli add cursor rule .cursor/rules/specs-documentation.mdc` records the rule in `.skli/skli.json`.
+After `npx @zortracks/skli init`, from the repo: `skli add cursor rule .cursor/rules/specs-documentation.mdc` records the rule in `.skli/skli.json`.
 
 ## Dependencies
 
@@ -99,7 +99,7 @@ After `npx skli init`, from the repo: `skli add cursor rule .cursor/rules/specs-
 ## Acceptance criteria
 
 - [x] `skli add <ide> <kind> <path>` upserts a local Package entry with `ide` in the ProjectManifest map.
-- [x] Refuses if ProjectManifest missing with message `npx skli init`.
+- [x] Refuses if ProjectManifest missing with message `npx @zortracks/skli init`.
 - [x] Refuses invalid ide/kind or missing path.
 - [x] Idempotent (upsert) for the same id.
 - [x] Does not touch `~/.skli/projects.json`.

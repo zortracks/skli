@@ -27,10 +27,10 @@ Same selection model as [update](./update).
 ## Examples
 
 ```bash
-npx skli remove cursor skill foo
-npx skli remove --all
-npx skli remove cursor skill foo --keep-sources
-npx skli remove cursor rule my-rule --remove-sources
+npx @zortracks/skli remove cursor skill foo
+npx @zortracks/skli remove --all
+npx @zortracks/skli remove cursor skill foo --keep-sources
+npx @zortracks/skli remove cursor rule my-rule --remove-sources
 ```
 
 ## Behavior notes

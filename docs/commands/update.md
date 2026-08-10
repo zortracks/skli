@@ -32,11 +32,11 @@ skli update <install-path> [options]
 ## Examples
 
 ```bash
-npx skli update --all
-npx skli update cursor skill foo
-npx skli update cursor skill foo --version v2.0.0
-npx skli update .cursor/skills/arcade-bootstrap
-npx skli update --all --gitignore
+npx @zortracks/skli update --all
+npx @zortracks/skli update cursor skill foo
+npx @zortracks/skli update cursor skill foo --version v2.0.0
+npx @zortracks/skli update .cursor/skills/arcade-bootstrap
+npx @zortracks/skli update --all --gitignore
 ```
 
 ## Behavior notes

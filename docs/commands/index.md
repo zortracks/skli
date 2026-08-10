@@ -1,7 +1,7 @@
 # Commands
 
 ```bash
-npx skli <command> [options]
+npx @zortracks/skli <command> [options]
 skli <command> --help
 ```
 

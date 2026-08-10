@@ -27,9 +27,9 @@ No `--version` / `--gitignore` on restore.
 ## Examples
 
 ```bash
-npx skli restore --all
-npx skli restore cursor skill foo
-npx skli restore .cursor/skills/arcade-bootstrap
+npx @zortracks/skli restore --all
+npx @zortracks/skli restore cursor skill foo
+npx @zortracks/skli restore .cursor/skills/arcade-bootstrap
 ```
 
 ## Behavior notes

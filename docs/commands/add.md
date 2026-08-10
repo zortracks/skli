@@ -17,8 +17,8 @@ skli add <ide> <kind> <path>
 ## Examples
 
 ```bash
-npx skli add cursor rule .cursor/rules/specs-documentation.mdc
-npx skli add cursor skill .cursor/skills/my-skill
+npx @zortracks/skli add cursor rule .cursor/rules/specs-documentation.mdc
+npx @zortracks/skli add cursor skill .cursor/skills/my-skill
 ```
 
 ## Behavior

@@ -72,8 +72,8 @@ Options:
 
 ## User scenarios
 
-`npx skli unlink zortracks/skli` removes that link and deletes linked IDE copies.  
-`npx skli unlink https://github.com/zortracks/skli --keep-sources` removes link metadata only.
+`npx @zortracks/skli unlink zortracks/skli` removes that link and deletes linked IDE copies.  
+`npx @zortracks/skli unlink https://github.com/zortracks/skli --keep-sources` removes link metadata only.
 
 ## Dependencies
 

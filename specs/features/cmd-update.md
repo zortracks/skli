@@ -144,10 +144,10 @@ Invalid combinations (e.g. `--all` with `<id>`, `<id>` without `<kind>`, no `--a
 
 ## User scenarios
 
-`npx skli update --all` upgrades every repos Package in the project Manifest to the latest tag (when `versioning=tag`).  
-`npx skli update cursor skill arcade-bootstrap` upgrades that skill into Cursor dirs only (intersection).  
-`npx skli update .cursor/skills/arcade-bootstrap` same as the previous command via path.  
-`npx skli update cursor skill arcade-bootstrap --version v0.1.7` pins that tag.  
+`npx @zortracks/skli update --all` upgrades every repos Package in the project Manifest to the latest tag (when `versioning=tag`).  
+`npx @zortracks/skli update cursor skill arcade-bootstrap` upgrades that skill into Cursor dirs only (intersection).  
+`npx @zortracks/skli update .cursor/skills/arcade-bootstrap` same as the previous command via path.  
+`npx @zortracks/skli update cursor skill arcade-bootstrap --version v0.1.7` pins that tag.  
 Already at target version → skip message, exit 0.
 
 ## Dependencies

@@ -120,10 +120,10 @@ Invalid combinations (selection same as update; `--keep-sources` with `--remove-
 
 ## User scenarios
 
-`npx skli remove cursor skill arcade-bootstrap` uninstalls that repos skill from Cursor dirs and Manifest.  
-`npx skli remove .cursor/skills/arcade-bootstrap` same via path.  
-`npx skli remove cursor rule specs-documentation` drops the local Manifest reference without deleting the rule file.  
-`npx skli remove --all --keep-sources` clears Manifest entries for repos Packages but leaves IDE copies on disk.
+`npx @zortracks/skli remove cursor skill arcade-bootstrap` uninstalls that repos skill from Cursor dirs and Manifest.  
+`npx @zortracks/skli remove .cursor/skills/arcade-bootstrap` same via path.  
+`npx @zortracks/skli remove cursor rule specs-documentation` drops the local Manifest reference without deleting the rule file.  
+`npx @zortracks/skli remove --all --keep-sources` clears Manifest entries for repos Packages but leaves IDE copies on disk.
 
 ## Dependencies
 

@@ -101,11 +101,11 @@ Options:
 
 ## User scenarios
 
-`npx skli install cursor rule .cursor/rules/specs-documentation.mdc` copies the rule and records a local entry.  
-`npx skli install cursor skill owner/repo@main:skills/foo --versioning tag` installs the **latest tag** (not `main`) and records that tag as `version`.  
-`npx skli install cursor skill ./skills/foo --no-references` skips `references/` and sets `includeReferences: false`.  
-`npx skli install cursor,claude skill owner/repo:skills/foo --gitignore` installs into both IDE dirs and adds both paths to `.gitignore`.  
-`npx skli link cursor owner/repo --all` links a remote ProjectManifest (see [`cmd-link`](cmd-link.md)).
+`npx @zortracks/skli install cursor rule .cursor/rules/specs-documentation.mdc` copies the rule and records a local entry.  
+`npx @zortracks/skli install cursor skill owner/repo@main:skills/foo --versioning tag` installs the **latest tag** (not `main`) and records that tag as `version`.  
+`npx @zortracks/skli install cursor skill ./skills/foo --no-references` skips `references/` and sets `includeReferences: false`.  
+`npx @zortracks/skli install cursor,claude skill owner/repo:skills/foo --gitignore` installs into both IDE dirs and adds both paths to `.gitignore`.  
+`npx @zortracks/skli link cursor owner/repo --all` links a remote ProjectManifest (see [`cmd-link`](cmd-link.md)).
 
 ## Dependencies
 

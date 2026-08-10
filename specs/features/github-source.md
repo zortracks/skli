@@ -103,7 +103,7 @@ gh api repos/{owner}/{repo}/contents/.skli/skli.json?ref={ref}
 
 ## User scenarios
 
-After `gh auth login`: `npx skli link cursor owner/repo@main --all --debug` fetches the remote ProjectManifest at ref `main` and links selected packages.
+After `gh auth login`: `npx @zortracks/skli link cursor owner/repo@main --all --debug` fetches the remote ProjectManifest at ref `main` and links selected packages.
 
 ## Dependencies
 

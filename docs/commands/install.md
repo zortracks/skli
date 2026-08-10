@@ -27,10 +27,10 @@ skli install <ide> <kind> <source> [options]
 ## Examples
 
 ```bash
-npx skli install cursor rule ./path/to/rule.mdc
-npx skli install cursor skill owner/repo@v1:skills/foo
-npx skli install cursor,claude skill owner/repo:skills/foo --gitignore
-npx skli install cursor skill owner/repo:skills/foo --global
+npx @zortracks/skli install cursor rule ./path/to/rule.mdc
+npx @zortracks/skli install cursor skill owner/repo@v1:skills/foo
+npx @zortracks/skli install cursor,claude skill owner/repo:skills/foo --gitignore
+npx @zortracks/skli install cursor skill owner/repo:skills/foo --global
 ```
 
 ## Behavior notes

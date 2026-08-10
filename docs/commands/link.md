@@ -28,9 +28,9 @@ skli link <ide> <source> [options]
 ## Examples
 
 ```bash
-npx skli link cursor owner/repo
-npx skli link cursor owner/repo --all --gitignore
-npx skli link cursor,claude owner/repo@v1 --all-skills
+npx @zortracks/skli link cursor owner/repo
+npx @zortracks/skli link cursor owner/repo --all --gitignore
+npx @zortracks/skli link cursor,claude owner/repo@v1 --all-skills
 ```
 
 ## Behavior notes

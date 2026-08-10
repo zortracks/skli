@@ -21,9 +21,9 @@ skli init [options]
 ## Examples
 
 ```bash
-npx skli init
-npx skli init -y --name my-app --tags ai,cursor
-npx skli init --force
+npx @zortracks/skli init
+npx @zortracks/skli init -y --name my-app --tags ai,cursor
+npx @zortracks/skli init --force
 ```
 
 ## Behavior

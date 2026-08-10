@@ -10,10 +10,10 @@ Requires **Node.js 20+**. For GitHub sources, install and authenticate the [`gh`
 
 ```bash
 # One-off
-npx skli <command> [options]
+npx @zortracks/skli <command> [options]
 
 # Or install globally
-npm install -g skli
+npm install -g @zortracks/skli
 skli <command> [options]
 ```
 
@@ -21,19 +21,19 @@ skli <command> [options]
 
 ```bash
 # 1. Create a project manifest
-npx skli init
+npx @zortracks/skli init
 
 # 2a. Reference a local package already in the repo
-npx skli add cursor rule .cursor/rules/my-rule.mdc
+npx @zortracks/skli add cursor rule .cursor/rules/my-rule.mdc
 
 # 2b. Install a package from GitHub into IDE folders
-npx skli install cursor skill owner/repo@v1:skills/foo
+npx @zortracks/skli install cursor skill owner/repo@v1:skills/foo
 
 # 2c. Link a remote project manifest and pick packages interactively
-npx skli link cursor owner/repo
+npx @zortracks/skli link cursor owner/repo
 
 # Optional: ignore installed IDE paths in git
-npx skli install cursor skill owner/repo:skills/foo --gitignore
+npx @zortracks/skli install cursor skill owner/repo:skills/foo --gitignore
 ```
 
 ## Commands
@@ -113,7 +113,7 @@ Product specs live under [`specs/`](specs/) ([index](specs/README.md)). Full use
 ```bash
 npm install
 npm run build
-npx skli --help
+npx @zortracks/skli --help
 ```
 
 Docs site (local): `npm run docs:dev` after install.
@@ -127,8 +127,8 @@ GitHub Pages is built by [`.github/workflows/publish.yml`](.github/workflows/pub
 
 ### First-time npm setup
 
-1. Ensure the `skli` package exists on npm (one manual publish if needed).
-2. On npmjs.com → package **skli** → **Trusted Publisher**: GitHub org/user `zortracks`, repository `skli`, workflow filename `publish.yml`, allow `npm publish`.
+1. Ensure the `@zortracks/skli` package exists on npm (one manual publish if needed).
+2. On npmjs.com → package **@zortracks/skli** → **Trusted Publisher**: GitHub org/user `zortracks`, repository `skli`, workflow filename `publish.yml`, allow `npm publish`.
 3. Later releases only need the Publish workflow.
 
 ## License

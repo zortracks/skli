@@ -51,7 +51,7 @@ export function registerAddCommand(program: Command): void {
 
       if (!(await projectManifestExists(projectRoot))) {
         console.error(
-          "Error: project manifest not found (.skli/skli.json). Run `npx skli init` first.",
+          "Error: project manifest not found (.skli/skli.json). Run `npx @zortracks/skli init` first.",
         );
         process.exitCode = 1;
         return;

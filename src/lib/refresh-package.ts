@@ -619,7 +619,7 @@ export async function runRefresh(
   if (!options.global) {
     if (!(await projectManifestExists(options.projectRoot))) {
       throw new Error(
-        "Error: project manifest not found (.skli/skli.json). Run `npx skli init` first.",
+        "Error: project manifest not found (.skli/skli.json). Run `npx @zortracks/skli init` first.",
       );
     }
   }
