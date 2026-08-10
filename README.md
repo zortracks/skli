@@ -123,10 +123,14 @@ GitHub Pages is built by [`.github/workflows/docs.yml`](.github/workflows/docs.y
 ### Release
 
 1. GitHub Actions → **Bump version** → `patch` / `minor` / `major`.
-2. Merge PR `release/vX.Y.Z` → `main`.
-3. `tag-release` creates tag `vX.Y.Z`; `publish` releases to npm via Trusted Publishing (OIDC).
+2. Review and merge the PR `release/vX.Y.Z` → `main`.
+3. `tag-release` creates tag `vX.Y.Z` on `main`; `publish` releases to npm via Trusted Publishing (OIDC).
 
-First-time npm: create the package if needed, then configure **Trusted Publisher** on npmjs.com for org/user `zortracks`, repo `skli`, workflow `publish.yml`.
+### First-time npm setup
+
+1. Ensure the `skli` package exists on npm (one manual publish if needed).
+2. On npmjs.com → package **skli** → **Trusted Publisher**: GitHub org/user `zortracks`, repository `skli`, workflow filename `publish.yml`, allow `npm publish`.
+3. Later releases only need the bump workflow + merge to `main`.
 
 ## License
 
