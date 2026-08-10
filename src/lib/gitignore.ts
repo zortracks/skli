@@ -2,16 +2,31 @@ import fs from "node:fs/promises";
 import path from "node:path";
 
 /** Exact section header written under project `.gitignore`. */
-export const GITIGNORE_AI_IDES_SECTION = "# Ignored AI IDEs références";
+export const GITIGNORE_AI_IDES_SECTION = "# Ignored AI IDE references";
+
+/** Legacy header kept for read compatibility with older installs. */
+export const GITIGNORE_AI_IDES_SECTION_LEGACY =
+  "# Ignored AI IDEs références";
+
+const GITIGNORE_SECTION_HEADERS = new Set([
+  GITIGNORE_AI_IDES_SECTION,
+  GITIGNORE_AI_IDES_SECTION_LEGACY,
+]);
 
 function toPosixRelative(p: string): string {
   return p.split(path.sep).join("/");
 }
 
+function isGitignoreSectionHeader(line: string): boolean {
+  return GITIGNORE_SECTION_HEADERS.has(line.trim());
+}
+
 /**
- * Ensure `relativePaths` appear under `# Ignored AI IDEs références` in
+ * Ensure `relativePaths` appear under `# Ignored AI IDE references` in
  * `{projectRoot}/.gitignore`. Creates the file and/or section if needed.
- * Skips duplicates. Paths should already be project-relative (posix `/`).
+ * Recognizes the legacy French header when reading; writes only the English
+ * header for new sections. Skips duplicates. Paths should already be
+ * project-relative (posix `/`).
  */
 export async function ensureGitignoreSectionEntries(
   projectRoot: string,
@@ -44,9 +59,7 @@ export async function ensureGitignoreSectionEntries(
     lines.pop();
   }
 
-  let sectionIndex = lines.findIndex(
-    (line) => line.trim() === GITIGNORE_AI_IDES_SECTION,
-  );
+  let sectionIndex = lines.findIndex((line) => isGitignoreSectionHeader(line));
 
   if (sectionIndex === -1) {
     if (lines.length > 0) {

@@ -58,7 +58,7 @@ npx skli add cursor rule .cursor/rules/specs-documentation.mdc
 | [cli-core](specs/features/cli-core.md) | implemented | npm package, `skli` bin, Commander, `npx skli` |
 | [config-manifests](specs/features/config-manifests.md) | implemented | Schemas for `.skli` / `skli.json` / `projects.json` (incl. `links`) |
 | [cmd-init](specs/features/cmd-init.md) | implemented | `init` — ProjectManifest + ProjectIndex |
-| [cmd-install](specs/features/cmd-install.md) | defined | `install {ide} {kind} {source}` — skill/rule/agent; optional `--gitignore` |
+| [cmd-install](specs/features/cmd-install.md) | implemented | `install {ide} {kind} {source}` — skill/rule/agent; optional `--gitignore` |
 | [cmd-link](specs/features/cmd-link.md) | implemented | `link {ide} {source}` — link remote ProjectManifest; select packages |
 | [cmd-add](specs/features/cmd-add.md) | implemented | `add {ide} {kind} {path}` — reference Package in ProjectManifest |
 | [cmd-update](specs/features/cmd-update.md) | implemented | `update` — upgrade repos Packages + linked manifests; path target; `--version`; `--gitignore` |
