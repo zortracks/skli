@@ -1,0 +1,30 @@
+{
+  "$schema": "https://raw.githubusercontent.com/zortracks/skli/main/schemas/skli.project.schema.json",
+  "version": 1,
+  "name": "skli",
+  "description": "CLI to manage AI IDE skills, rules, and agents like packages",
+  "versioning": "tag",
+  "tags": [
+    "cli",
+    "skills",
+    "rules",
+    "agents",
+    "cursor"
+  ],
+  "skills": {},
+  "rules": {
+    "specs-documentation": {
+      "source": "local",
+      "path": ".cursor/rules/specs-documentation.mdc",
+      "versioning": "none",
+      "ide": "cursor"
+    },
+    "plan-mode-phase-commits": {
+      "source": "local",
+      "path": ".cursor/rules/plan-mode-phase-commits.mdc",
+      "versioning": "none",
+      "ide": "cursor"
+    }
+  },
+  "agents": {}
+}

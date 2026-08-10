@@ -1,0 +1,15 @@
+{
+  "rootNamespace": "Skli",
+  "solutionSlug": "skli",
+  "productName": "skli",
+  "productDomain": "skli",
+  "paths": {
+    "schemas": "schemas"
+  },
+  "specs": {
+    "root": "specs",
+    "features": "specs/features",
+    "featuresIndex": "specs/README.md",
+    "glossaryOwner": "domain-glossary"
+  }
+}

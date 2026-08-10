@@ -1,0 +1,49 @@
+---
+description: Ask for phase commits when defining a Plan-mode plan, then create them if accepted
+alwaysApply: true
+---
+
+# Phase commits — Plan mode
+
+Applies to every plan written in **Plan mode**, split into numbered phases (`PHASE 1`, `PHASE 2`, …). See `BOOTSTRAP.md` as the canonical example.
+
+Consent given when the plan is defined authorizes boundary commits; without that consent, do not commit.
+
+## When defining the plan
+
+Before submitting the plan for approval, ask via `AskQuestion`:
+
+- **Multi-phase plan**: *"Do you want me to create a git commit at the end of each phase of the plan?"*
+- **Single-phase plan**: *"Do you want me to create a git commit at the end of the plan?"*
+
+Record the choice explicitly in the plan (dedicated section or metadata), e.g. `Commits: yes, one commit per phase` or `Commits: no`.
+
+## At execution — if yes
+
+At the end of each phase (or at the end of the plan if single-phase):
+
+1. `git status` — if no changes (read-only phase), skip without committing.
+2. Otherwise: `git diff`, concise imperative message (e.g. `Add financial forecast section`), `git add` + `git commit` via HEREDOC.
+3. Do not re-ask at each phase — the initial consent is enough.
+4. No `git push` without an explicit request.
+
+## At execution — if no
+
+Do not propose or create commits; the user manages git themselves.
+
+## Examples
+
+```markdown
+// ✅ GOOD — plan definition (2 phases)
+AskQuestion: "Do you want me to create a git commit at the end of each phase?"
+→ Plan includes: "Commits: yes, one commit per phase at execution"
+
+// ✅ GOOD — single-phase plan, user said yes
+End of execution → git commit -m "Add neox-rules.json for consumer repo"
+
+// ❌ BAD — no question at definition
+Plan submitted without asking commit preference
+
+// ❌ BAD — commit despite initial refusal
+User said no at definition → git commit at end of phase anyway
+```
