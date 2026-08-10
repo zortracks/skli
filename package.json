@@ -26,6 +26,17 @@
     "cursor"
   ],
   "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/zortracks/skli.git"
+  },
+  "bugs": {
+    "url": "https://github.com/zortracks/skli/issues"
+  },
+  "homepage": "https://github.com/zortracks/skli#readme",
+  "publishConfig": {
+    "access": "public"
+  },
   "dependencies": {
     "@inquirer/prompts": "^8.5.2",
     "commander": "^13.1.0"
