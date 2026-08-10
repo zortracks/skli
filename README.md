@@ -113,7 +113,7 @@ Product specs live under [`specs/`](specs/) ([index](specs/README.md)). Full use
 ```bash
 npm install
 npm run build
-npx @zortracks/skli --help
+node dist/cli.js --help
 ```
 
 Docs site (local): `npm run docs:dev` after install.
@@ -122,8 +122,8 @@ GitHub Pages is built by [`.github/workflows/publish.yml`](.github/workflows/pub
 
 ### Release
 
-1. GitHub Actions → **Publish** → choose `patch` / `minor` / `major` → Run workflow.
-2. The workflow bumps the version on `main`, pushes tag `vX.Y.Z`, publishes to npm via Trusted Publishing (OIDC), deploys docs, and opens a sync PR `main` → `develop` if needed.
+1. GitHub Actions → **Publish** → choose `patch` / `minor` / `major` → Run workflow. Use `none` to publish the current `package.json` version when the git tag already exists (e.g. after a failed release that bumped but did not publish).
+2. The workflow bumps the version on `main` (unless `none`), pushes tag `vX.Y.Z`, publishes to npm via Trusted Publishing (OIDC), deploys docs, and opens a sync PR `main` → `develop` if needed.
 
 ### First-time npm setup
 

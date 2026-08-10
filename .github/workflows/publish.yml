@@ -6,13 +6,14 @@ on:
   workflow_dispatch:
     inputs:
       bump:
-        description: Semver bump
+        description: Semver bump (none = publish current package.json version / existing tag)
         required: true
         type: choice
         options:
           - patch
           - minor
           - major
+          - none
         default: patch
 
 permissions:
@@ -48,16 +49,20 @@ jobs:
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
 
       - name: Bump version, commit, and tag
+        if: inputs.bump != 'none'
         run: |
           npm version "${{ inputs.bump }}" -m "chore: release v%s"
 
       - name: Push commit and tag
+        if: inputs.bump != 'none'
         run: git push origin main --follow-tags
 
       - run: npm ci
       - run: npm run build
+      # Smoke the local build artifact (npx @zortracks/skli from this repo root
+      # does not reliably resolve the package bin before publish).
       - name: Smoke CLI
-        run: npx @zortracks/skli --help
+        run: node dist/cli.js --help
 
       - name: Check package version matches tag
         run: |
